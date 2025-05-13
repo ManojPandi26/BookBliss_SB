@@ -29,5 +29,6 @@ public class ReadingSessionDTO {
     @Min(value = 0, message = "Duration cannot be negative")
     private Integer durationMinutes;
 
+    // session notes can be displayed
     private String sessionNotes;
 }
