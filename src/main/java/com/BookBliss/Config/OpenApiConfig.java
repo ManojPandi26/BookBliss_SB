@@ -36,8 +36,11 @@ public class OpenApiConfig {
     @Value("${spring.application.name:BookBliss API}")
     private String applicationName;
 
-    @Value("${api.version:1.0}")
+    @Value("${api.version}")
     private String apiVersion;
+
+    @Value("${app.frontend-base-url}")
+    private String frontendUrl;
 
     @Bean
     public OpenAPI openAPI() {
@@ -49,16 +52,16 @@ public class OpenApiConfig {
                         .contact(new Contact()
                                 .name("BookBliss Support")
                                 .email("support@BookBliss.com")
-                                .url("https://www.BookBliss.com/support"))
+                                .url(frontendUrl+"/support"))
                         .license(new License()
                                 .name("BookBliss License")
-                                .url("https://www.BookBliss.com/license")))
+                                .url(frontendUrl+"/license")))
                 .servers(List.of(
                         new Server()
                                 .url("/")
                                 .description("Production Server"),
                         new Server()
-                                .url("http://localhost:8080")
+                                .url(frontendUrl)
                                 .description("Development Server")))
                 .components(new Components()
                         .addSecuritySchemes("bearerAuth",

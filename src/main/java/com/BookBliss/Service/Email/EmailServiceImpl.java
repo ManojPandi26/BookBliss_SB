@@ -19,7 +19,7 @@ public class EmailServiceImpl implements EmailService {
 
     private final JavaMailSender mailSender;
 
-    @Value("${app.frontend-base-url:http://localhost:5173}")
+    @Value("${app.frontend-base-url}")
     private String frontendBaseUrl;
 
     @Value("${app.email.from:noreply@BookBliss.com}")
